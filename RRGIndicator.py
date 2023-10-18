@@ -49,7 +49,7 @@ def get_color(x, y):
     
 # Retrieve historical prices 
 period = '1y'
-tickers = ['FOO.PA', 'HLT.PA', 'TNO.PA', 'BNK.PA', 'PABZ.PA', 'AUT.PA']
+tickers = ['BTU', 'DAC']
 tickers_metadata_dict = {
     'symbol': [],
     'name': []
@@ -62,7 +62,7 @@ for i in range(len(tickers)):
 
 tickers_to_show = tickers.copy()
 
-benchmark = '^STOXX'
+benchmark = 'SPY'
 
 tickers_data = yf.download(tickers, period=period, interval="1wk")['Adj Close']
 benchmark_data = yf.download(benchmark, period=period, interval="1wk")['Adj Close']
@@ -136,7 +136,8 @@ collabels = ['symbol', 'name', 'sector', 'industry', 'price', 'chg']
 
 # Add a slider for the end date 
 ax_end_date = plt.axes([0.25, 0.02, 0.65, 0.03], facecolor='grey')
-slider_end_date = Slider(ax_end_date, 'Date', tail, len(rsr_tickers[0])-2, valinit=tail, valstep=1, initcolor='none', track_color='grey')
+slider_end_date = Slider(ax_end_date, 'Date', tail, len(rsr_tickers[0])-2, valinit=tail, valstep=1)
+
 slider_end_date.poly.set_fc('grey')
 date = str(rsr_tickers[0].index[slider_end_date.val]).split(' ')[0]
 slider_end_date.valtext.set_text(date)
@@ -153,7 +154,7 @@ end_date = rsr_tickers[0].index[slider_end_date.val]
 
 #  Add a slider for the tail 
 ax_tail = plt.axes([0.25, 0.05, 0.65, 0.03])
-slider_tail = Slider(ax_tail, 'Tail', 1, 10, valinit=5, valstep=1, initcolor='none', track_color='grey')
+slider_tail = Slider(ax_tail, 'Tail', 1, 10, valinit=5, valstep=1, initcolor='none')
 slider_tail.poly.set_fc('grey')
 
 def update_slider_tail(val):
