@@ -49,7 +49,25 @@ def get_color(x, y):
     
 # Retrieve historical prices 
 period = '1y'
-tickers = ['BTU', 'DAC']
+tickers = [
+'TGH',
+'SMCI',
+'NVDA',
+'ACLS',
+'RMBS',
+'CDNS',
+'AAPL',
+'SPSC',
+'AVGO',
+'SNPS',
+'LSCC',
+'ON',
+'NSIT',
+'FTNT',
+'ONTO',
+'MSFT',
+'UMC'
+           ]
 tickers_metadata_dict = {
     'symbol': [],
     'name': []
@@ -100,14 +118,14 @@ def update_rrg():
 
 root = tk.Tk()
 root.title('RRG Indicator')
-root.geometry('1000x650')
+root.geometry('1000x1000')
 root.resizable(False, False)
 # Create scatter plot of JdK RS Ratio vs JdK RS Momentum
 # Upper plot is JdK RS Ratio vs JdK RS Momentum and below is a table of the status of each ticker
 fig, ax = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]})
 ax[0].set_title('RRG Indicator')
-ax[0].set_xlabel('JdK RS Ratio')
-ax[0].set_ylabel('JdK RS Momentum')
+ax[0].set_xlabel('RS Ratio')
+ax[0].set_ylabel('RS Momentum')
 
 # Add horizontal and vertical lines to (100, 100) origin 
 ax[0].axhline(y=100, color='k', linestyle='--')
